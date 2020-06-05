@@ -66,18 +66,15 @@ if __name__ == '__main__':
     parser.add_argument('--branch-miss-max', type=float, default=None,
                         help='maximum branch misprediction ratio (in percent)')
     parser.add_argument('procedure', type=str,
-                        help=('source file name and procedure name '
-                              'separated by colon'))
+                        help=('name of procedure to profile'))
     parser.add_argument('program', type=str, nargs='+',
                         help='print analysis information')
     args = parser.parse_args()
 
-    source, procedure = args.procedure.split(':')
-
-    info = run_profiler(args.program, procedure, args.l1_cache, args.ll_cache)
+    info = run_profiler(args.program, args.procedure,
+                        args.l1_cache, args.ll_cache)
     if not info:
-        raise SystemExit('Procedure "%s" not found in "%s"!' % (
-                         procedure, source))
+        raise SystemExit('Procedure "%s" not found!' % args.procedure)
 
     instructions = info['Ir']
     references = info['Dr'] + info['Dw']

@@ -14,7 +14,7 @@ sim: sim-0 sim-1
 test: test-0 test-1
 
 sim-%: $(PROG)
-	$(SIM) $(SIMOPTS.$*) $(PROG).c:randwalk$* -- ./$(PROG) $(SIM_PROGOPTS) -v $*
+	$(SIM) $(SIMOPTS.$*) randwalk$* -- ./$(PROG) $(SIM_PROGOPTS) -v $*
 
 test-%: $(PROG)
 	./$(PROG) $(PROGOPTS) -v $*
