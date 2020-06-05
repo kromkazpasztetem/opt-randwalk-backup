@@ -20,6 +20,6 @@ test-%: $(PROG)
 	./$(PROG) $(PROGOPTS) -v $*
 
 correct: $(PROG)
-	for i in `seq 10`; do ./$(PROG) -n 7 -s 14 -t 12; done
+	for i in `seq 10`; do ./$(PROG) -n 7 -s 14 -t 12 || exit 1; done
 
 # vim: ts=8 sw=8
