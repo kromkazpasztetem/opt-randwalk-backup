@@ -1,0 +1,13 @@
+name: GitHub Classroom Workflow
+
+on: [push]
+
+jobs:
+  build:
+    name: Autograding
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sudo apt-get install -y --no-install-recommends valgrind
+      - uses: actions/checkout@v2
+      - uses: education/autograding@v1
