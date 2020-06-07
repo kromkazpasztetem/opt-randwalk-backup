@@ -73,14 +73,14 @@ int randwalk1(uint8_t *arr, int n, int len) {
 
     sum += arr[i * n + j];
     
-    
     int i2 = (i > 0) & (d == 0);
     int i3 = (i < n-1) & (d == 1);
+    
+    i = i - i2 + i3;
         
     int j2 = (j > 0) & (d == 2);
     int j3 = (j < n-1) & (d == 3);
     
-    i = i - i2 + i3;
     j = j - j2 + j3;
 
   } while (--len);
